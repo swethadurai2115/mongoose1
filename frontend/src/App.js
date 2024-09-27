@@ -19,7 +19,6 @@ function App() {
         }
     };
 
-    // Function to fetch aggregated data
     const fetchAggregatedData = async () => {
         try {
             const response = await axios.get('http://localhost:5000/api/items/aggregate');
