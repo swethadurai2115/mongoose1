@@ -1,0 +1,27 @@
+.shop-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.category-section, .item-section {
+    width: 48%;
+}
+
+.category-item {
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.category-item:hover {
+    background-color: #e0e0e0;
+}
+
+.item-section ul {
+    list-style-type: none;
+    padding: 0;
+}

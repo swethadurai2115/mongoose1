@@ -1,0 +1,79 @@
+.sale-container {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.sale-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.sale-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.sale-form-group {
+    display: flex;
+    gap: 10px;
+}
+
+.sale-select, .sale-input, .sale-button, .sale-submit-button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.sale-button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.sale-button:hover {
+    background-color: #0056b3;
+}
+
+.sale-submit-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.sale-submit-button:hover {
+    background-color: #218838;
+}
+
+.sale-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sale-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.sale-item-detail {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.sale-delete-button {
+    margin-left: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.sale-delete-button:hover {
+    background-color: #c82333;
+}

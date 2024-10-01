@@ -19,10 +19,11 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 const Category = require('./models/Category');
 const Item = require('./models/Item');
 const Sale = require('./models/Sale');
-
+const categoryRoutes = require('./routes/categoryRoutes');
 // Routes
+app.use('/categories', categoryRoutes);
 app.use('/categories', require('./routes/categoryRoutes'));
-app.use('/items', require('./routes/itemRoutes'));
+app.use('/items', require('./routes/ItemRoutes'));
 app.use('/sales', require('./routes/saleRoutes'));
 
 const PORT = process.env.PORT || 5000;

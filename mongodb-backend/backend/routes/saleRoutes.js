@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Sale = require('../models/Sale');
+const Sale = require('../models/Sale'); // Make sure the path to your Sale model is correct
 
 // Get all sales
 router.get('/', async (req, res) => {
@@ -29,4 +29,18 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Delete a sale by ID
+router.delete('/:id', async (req, res) => {
+    try {
+        const sale = await Sale.findByIdAndDelete(req.params.id);
+        if (!sale) {
+            return res.status(404).send('Sale not found');
+        }
+        res.status(200).send('Sale deleted successfully');
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+// Export the router
 module.exports = router;
