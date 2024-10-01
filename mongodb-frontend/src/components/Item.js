@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Item.css'; // Import the CSS file
+import './Item.css'; // Make sure you have your CSS file imported
 
 const Item = () => {
     const [items, setItems] = useState([]);
@@ -10,7 +10,7 @@ const Item = () => {
     const [category, setCategory] = useState('');
 
     useEffect(() => {
-        // Fetch items and categories from the server
+        // Fetch items and categories when the component mounts
         axios.get('http://localhost:5000/items')
             .then(res => setItems(res.data))
             .catch(err => console.error(err));
@@ -34,11 +34,21 @@ const Item = () => {
             .catch(err => console.error(err));
     };
 
+    const handleDelete = (id) => {
+        // Send a delete request to the server
+        axios.delete(`http://localhost:5000/items/${id}`)
+            .then(() => {
+                // Filter out the deleted item from the state
+                setItems(items.filter(item => item._id !== id));
+            })
+            .catch(err => console.error(err));
+    };
+
     return (
         <div className="item-container">
             <h2 className="item-title">Items</h2>
 
-            {/* Form for adding items - This is now at the top */}
+            {/* Form for adding items */}
             <form onSubmit={handleSubmit} className="item-form">
                 <input
                     type="text"
@@ -76,12 +86,18 @@ const Item = () => {
             <ul className="item-list">
                 {items.map(item => (
                     <li key={item._id} className="item">
-                        {item.name} - ${item.price} 
+                        {item.name} - ${item.price}
                         {item.category ? (
                             <span className="item-category">(Category: {item.category.name})</span>
                         ) : (
                             <span className="item-category">(Category: Not Available)</span>
                         )}
+                        {/* Delete button */}
+                        <button 
+                            className="delete-button" 
+                            onClick={() => handleDelete(item._id)}>
+                            Delete
+                        </button>
                     </li>
                 ))}
             </ul>

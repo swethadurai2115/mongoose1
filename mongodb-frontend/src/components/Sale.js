@@ -62,7 +62,7 @@ const Sale = () => {
         <div className="sale-container">
             <h2 className="sale-title">Sales</h2>
 
-            {/* Form for selecting items and total price - This is now at the top */}
+            {/* Form for selecting items and total price */}
             <form onSubmit={handleSubmit} className="sale-form">
                 {saleItems.map((saleItem, index) => (
                     <div key={index} className="sale-form-group">
@@ -105,13 +105,14 @@ const Sale = () => {
                 {sales.map(sale => (
                     <li key={sale._id} className="sale-item">
                         Sale: {sale.sale_items.map(si => (
-                            <span key={si.item._id} className="sale-item-detail">
-                                {si.item.name} (Quantity: {si.quantity}),
+                            <span key={si._id} className="sale-item-detail">
+                                {/* Check if si.item exists before accessing si.item.name */}
+                                {si.item ? si.item.name : 'Unknown Item'} (Quantity: {si.quantity}),
                             </span>
                         ))}
                         - Total: ${sale.total_price}
 
-                        {/* Add the delete button here */}
+                        {/* Delete sale button */}
                         <button 
                             className="sale-delete-button" 
                             onClick={() => handleDeleteSale(sale._id)}>
