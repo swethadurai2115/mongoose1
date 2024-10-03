@@ -3,15 +3,17 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const ItemRoutes = require('./routes/ItemRoutes')
+const ItemRoutes = require('./routes/ItemRoutes');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
 //Use item routes
 app.use('/', ItemRoutes);
+
 // MongoDB connection string
-const mongoURI = 'mongodb://localhost:27017/salesdb'; // Ensure this is correct
+const mongoURI = 'mongodb://localhost:27017/salesdb'; 
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
@@ -22,6 +24,7 @@ const Category = require('./models/Category');
 const Item = require('./models/Item');
 const Sale = require('./models/Sale');
 const categoryRoutes = require('./routes/categoryRoutes');
+
 // Routes
 app.use('/categories', categoryRoutes);
 app.use('/categories', require('./routes/categoryRoutes'));
